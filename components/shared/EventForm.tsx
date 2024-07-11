@@ -27,7 +27,7 @@ type EventFormProps = {
 	userId: string
 	type: "Create" | "Update"
 	event?: IEvent
-	eventId: string
+	eventId?: string
 }
 
 const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
@@ -206,14 +206,15 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 								className="filter-grey"
 							/>
 							<p className="ml-3 whitespace-nowrap text-gray-600">Start Date:</p>
-							<DatePicker 
+						 <DatePicker 
                         		selected={field.value} 
-                        		onChange={(date: Date) => field.onChange(date)} 
+                        		onChange={(date: Date | null) => field.onChange(date)} 
 								showTimeSelect
 								timeInputLabel="Time:"
 								dateFormat="MM/dd/yyyy h:mm aa"
 								wrapperClassName="datePicker"
-							/>
+							/> 
+
 						</div>
 					</FormControl>
 					<FormMessage />
@@ -240,7 +241,7 @@ const EventForm = ({ userId, type, event, eventId }: EventFormProps) => {
 							<p className="ml-3 whitespace-nowrap text-gray-600">End Date:</p>
 							<DatePicker 
                         		selected={field.value} 
-                        		onChange={(date: Date) => field.onChange(date)} 
+                        		onChange={(date: Date | null) => field.onChange(date)} 
 								showTimeSelect
 								timeInputLabel="Time:"
 								dateFormat="MM/dd/yyyy h:mm aa"
